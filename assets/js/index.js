@@ -3,6 +3,7 @@ import * as geoData from "../../data/france_geojson.json";
 import * as Routing from "leaflet-routing-machine";
 import {PathTracker} from "./services/PathTracker";
 
+// inject leaflet into pathTracker
 const pathTracker = new PathTracker(L);
 //gen map
 pathTracker.generateMap();
