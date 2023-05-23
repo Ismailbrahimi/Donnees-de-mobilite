@@ -6,6 +6,7 @@ module.exports = {
     mode: "development",
     entry: {
         index: './assets/js/index.js',
+        home: './assets/js/home.js'
     },
     output: {
         path: path.resolve(__dirname, './dist/'),
@@ -28,15 +29,12 @@ module.exports = {
             ],
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.scss$/,
           use: [
-            // Creates `style` nodes from JS strings
-            MiniCssExtractPlugin.loader,
-            // Translates CSS into CommonJS
-            "css-loader",
-            // Compiles Sass to CSS
-            "sass-loader",
-          ],
+            'style-loader',
+            'css-loader',
+            'sass-loader'
+          ]
         },
         {
             test: /\.m?js$/,
@@ -53,13 +51,13 @@ module.exports = {
       ],
     },
     optimization: {
-      minimizer: [
-        new CssMinimizerPlugin(),
-        //new TerserPlugin(),
-        new MiniCssExtractPlugin({
-          filename: "[name].css",
-          chunkFilename: "[id].css"
-        }),
-      ],
+      // minimizer: [
+      //   new CssMinimizerPlugin(),
+      //   //new TerserPlugin(),
+      //   new MiniCssExtractPlugin({
+      //     filename: "[name].css",
+      //     chunkFilename: "[id].css"
+      //   }),
+      // ],
     }
   };

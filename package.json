@@ -11,16 +11,22 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "leaflet-routing-machine": "^3.2.12",
+    "node-sass": "^9.0.0",
     "webpack": "^5.82.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.5",
     "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.4",
     "css-minimizer-webpack-plugin": "^5.0.0",
     "leaflet": "^1.9.3",
+    "leaflet-control-geocoder": "^2.4.0",
     "mini-css-extract-plugin": "^2.7.5",
+    "sass-loader": "^13.3.0",
+    "style-loader": "^3.3.3",
     "webpack-cli": "^5.1.1"
   }
 }
