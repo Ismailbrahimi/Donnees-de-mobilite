@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "leaflet-routing-machine": "^3.2.12",
     "webpack": "^5.82.1"
   },
   "devDependencies": {

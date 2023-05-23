@@ -1,1 +1,4 @@
 #map { height: 500px; max-width: 100%; margin: auto; }
+.leaflet-routing-container {
+    display: none;
+  }
