@@ -1,4 +1,4 @@
-var min = 50;
+var min = 10;
 var max = 1000;
 var randomdensity = Math.floor(Math.random() * (max - min + 1)) + min;
 
