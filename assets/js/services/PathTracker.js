@@ -5,7 +5,7 @@ export class PathTracker{
     constructor(L){
         this.L = L;
         this.line = null;
-        this.marker = null;
+        this.marker = null;// the marker of the destinitation point
         this.routeLines = []; // Array to store route lines
         this.routeMarkers = []; // Array to store route markers
     }
