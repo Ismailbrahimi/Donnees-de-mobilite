@@ -4,7 +4,11 @@ import {nepaldataa} from "./nepaldata";
 import {pointJSON} from "./point";
 import {polygonJSON} from "./polygon";
 import {lineJSON} from "./line";
-import {statesData} from "./frdepartments";
+// import {regions} from "./frdepartments";
+import { PathTracker } from "./services/PathTracker";
+import * as Routing from "leaflet-routing-machine";
+import regions from "../data/regions.json";
+
 
 //scss
 import "../scss/style.scss";
@@ -12,6 +16,13 @@ import "../scss/style.scss";
 import "bootstrap";
 import 'leaflet-control-geocoder';
 
+
+regions.features.forEach(element => {
+    const min = 10;
+    const max = 1000;
+    const randomdensity = Math.floor(Math.random() * (max - min + 1)) + min;
+    element.properties.density = randomdensity;
+});
 
 var isTracking = false;
     var toggleButton = document.getElementById("toggleButton");
@@ -28,71 +39,82 @@ var isTracking = false;
     }
 
 
-    /*===================================================
-                      OSM  LAYER               
-===================================================*/
-
-// inject leaflet into pathTracker
-var map = L.map("map").setView([51.505, -0.09], 4);
-var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const oopMap = new PathTracker(L);
+const map = oopMap.generateMap();
+const osm = oopMap.setTilePlayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
-osm.addTo(map);
 
-/*===================================================
-                      MARKER               
-===================================================*/
 
-var singleMarker = L.marker([28.25255,83.97669]);
-singleMarker.addTo(map);
-var popup = singleMarker.bindPopup('This is a popup')
-popup.addTo(map);
+//set icon
+oopMap.setIcon("../marker.png");
+// set routing control
+oopMap.setRoutingControl(
+     [
+        oopMap.L.latLng(48.573405, 7.752111), // Strasbourg
+        oopMap.L.latLng(48.858222, 2.2945), // Paris
+     ]);
 
-/*===================================================
-                     TILE LAYER               
-===================================================*/
+     oopMap.setRoutingControl([
+        oopMap.L.latLng(43.296482, 5.36978), // Marseille
+        oopMap.L.latLng(45.767, 4.833), // Lyon
+    ]);
 
-var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-subdomains: 'abcd',
-	maxZoom: 19
-});
-CartoDB_DarkMatter.addTo(map);
+    oopMap.setRoutingControl([
+        oopMap.L.latLng(44.8378, -0.5792), // Bordeaux
+        oopMap.L.latLng(48.1173, -1.6778), // Rennes
+     ]);
+
+
+
+const CartoDB_DarkMatter = oopMap.setTilePlayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+        maxZoom: 19
+    });
 
 // Google Map Layer
-
-const googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+const googleStreets  = oopMap.setTilePlayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
     maxZoom: 20,
     subdomains:['mt0','mt1','mt2','mt3']
  });
- console.log("am google streets", googleStreets);
- googleStreets.addTo(map);
 
+ const googleSat  = oopMap.setTilePlayer("http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}", {
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+  });
  // Satelite Layer
-const googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-   maxZoom: 20,
-   subdomains:['mt0','mt1','mt2','mt3']
- });
-googleSat.addTo(map);
+const Stamen_Watercolor  = oopMap.setTilePlayer("https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}", {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+   subdomains: 'abcd',
+   minZoom: 1,
+   maxZoom: 16,
+   ext: 'jpg'
+   });
 
-var Stamen_Watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
- attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-subdomains: 'abcd',
-minZoom: 1,
-maxZoom: 16,
-ext: 'jpg'
-});
-Stamen_Watercolor.addTo(map);
 
 
 /*===================================================
                       GEOJSON               
 ===================================================*/
 
-var linedata = L.geoJSON(lineJSON).addTo(map);
-var pointdata = L.geoJSON(pointJSON).addTo(map);
-var nepalData = L.geoJSON(nepaldataa).addTo(map);
-var polygondata = L.geoJSON(polygonJSON,{
+// var linedata = L.geoJSON(lineJSON).addTo(map);
+const linedata = oopMap.setChoroplethMap(lineJSON);
+// var pointdata = L.geoJSON(pointJSON).addTo(map);
+const pointdata = oopMap.setChoroplethMap(pointJSON);
+
+// var polygondata = L.geoJSON(polygonJSON,{
+//     onEachFeature: function(feature,layer){
+//         layer.bindPopup('<b>This is a </b>' + feature.properties.name)
+//     },
+//     style:{
+//         fillColor: 'red',
+//         fillOpacity:1,
+//         color: 'green'
+//     }
+// }).addTo(map);
+
+const polygondata = oopMap.setChoroplethMap(polygonJSON,{
     onEachFeature: function(feature,layer){
         layer.bindPopup('<b>This is a </b>' + feature.properties.name)
     },
@@ -101,130 +123,79 @@ var polygondata = L.geoJSON(polygonJSON,{
         fillOpacity:1,
         color: 'green'
     }
-}).addTo(map);
+});
 
 /*===================================================
                       LAYER CONTROL               
 ===================================================*/
 
-var baseLayers = {
+const baseLayers = {
     "Satellite":googleSat,
     "Google Map":googleStreets,
     "Water Color":Stamen_Watercolor,
     "OpenStreetMap": osm,
 };
 
-var overlays = {
-    "Marker": singleMarker,
+const overlays = {
+    //"Marker": singleMarker,
     "PointData":pointdata,
     "LineData":linedata,
     "PolygonData":polygondata
 };
 
-L.control.layers(baseLayers, overlays).addTo(map);
+// L.control.layers(baseLayers, overlays).addTo(map);
+oopMap.setLayers(baseLayers, overlays)
 
 
 /*===================================================
                       SEARCH BUTTON               
 ===================================================*/
 
-L.Control.geocoder().addTo(map);
-
+// L.Control.geocoder().addTo(map);
+oopMap.setSearchBtn();
 
 /*===================================================
                       Choropleth Map               
 ===================================================*/
 
-L.geoJSON(statesData).addTo(map);
+// L.geoJSON(regions).addTo(map);
+oopMap.setChoroplethMap(regions);
+
+// function getColor(d) {
+//     return d > 1000 ? '#800026' :
+//            d > 500  ? '#BD0026' :
+//            d > 200  ? '#E31A1C' :
+//            d > 100  ? '#FC4E2A' :
+//            d > 50   ? '#FD8D3C' :
+//            d > 20   ? '#FEB24C' :
+//            d > 10   ? '#FED976' :
+//                       '#FFEDA0';
+// }
+
+// function style(feature) {
+//     return {
+//         fillColor: oopMap.getColor(feature.properties.density),
+//         weight: 2,
+//         opacity: 1,
+//         color: 'white',
+//         dashArray: '3',
+//         fillOpacity: 0.7
+//     };
+// }
+
+// L.geoJson(regions, {style: style}).addTo(map);
+oopMap.setChoroplethMap(regions, {style: oopMap.style});
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-function getColor(d) {
-    return d > 1000 ? '#800026' :
-           d > 500  ? '#BD0026' :
-           d > 200  ? '#E31A1C' :
-           d > 100  ? '#FC4E2A' :
-           d > 50   ? '#FD8D3C' :
-           d > 20   ? '#FEB24C' :
-           d > 10   ? '#FED976' :
-                      '#FFEDA0';
-}
+// function resetHighlight(e) {
+//     geojson.resetStyle(e.target);
+//     info.update();
+// }
 
-function style(feature) {
-    return {
-        fillColor: getColor(feature.properties.density),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
-}
+oopMap.legend = oopMap.L.control({position: 'bottomright'});
 
-L.geoJson(statesData, {style: style}).addTo(map);
-
-function highlightFeature(e) {
-    var layer = e.target;
-
-    layer.setStyle({
-        weight: 5,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-    });
-
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-    }
-
-    info.update(layer.feature.properties);
-}
-
-function resetHighlight(e) {
-    geojson.resetStyle(e.target);
-    info.update();
-}
-
-var geojson;
-// ... our listeners
-geojson = L.geoJson(statesData);
-
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
-
-function onEachFeature(feature, layer) {
-    layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-    });
-}
-
-geojson = L.geoJson(statesData, {
-    style: style,
-    onEachFeature: onEachFeature
-}).addTo(map);
-
-var info = L.control();
-
-info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this.update();
-    return this._div;
-};
-
-// method that we will use to update the control based on feature properties passed
-info.update = function (props) {
-    this._div.innerHTML = '<h4>FRANCE Population Density</h4>' +  (props ?
-        '<b>' + props.nom + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
-        : 'Hover over a department');
-};
-
-info.addTo(map);
-
-var legend = L.control({position: 'bottomright'});
-
-legend.onAdd = function (map) {
+oopMap.legend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0, 10, 20, 50, 100, 200, 500, 1000],
@@ -233,12 +204,50 @@ legend.onAdd = function (map) {
     // loop through our density intervals and generate a label with a colored square for each interval
     for (var i = 0; i < grades.length; i++) {
         div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            '<i style="background:' + oopMap.getColor(grades[i] + 1) + '"></i> ' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     }
 
     return div;
 };
 
-legend.addTo(map);
+oopMap.legend.addTo(map);
+
+//##################
+
+oopMap.geoJSON = oopMap.setChoroplethMap(regions);
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: oopMap.highlightFeature,
+        mouseout: oopMap.resetHighlight,
+        click: oopMap.zoomToFeature
+    });
+}
+
+oopMap.geoJSON = oopMap.setChoroplethMap(regions, {
+    style: oopMap.style,
+    onEachFeature: onEachFeature
+});
+
+// const info = oopMap.L.control();
+oopMap.info = oopMap.L.control();
+
+oopMap.info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+oopMap.info.update = function (props) {
+    this._div.innerHTML = '<h4>FRANCE Population Density</h4>' +  (props ?
+        '<b>' + props.nom + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
+        : 'Hover over a department');
+};
+
+oopMap.info.addTo(map);
+
+// const legend = L.control({position: 'bottomright'});
+
 

@@ -1,13 +1,23 @@
+// Import the Browser module separately
+// import { Browser } from "leaflet";
+import { Map, tileLayer, control } from "leaflet";
+
 
 
 export class PathTracker{
     
     constructor(L){
         this.L = L;
+        this.info = null;
+        this.legend= null;
         this.line = null;
         this.marker = null;// the marker of the destinitation point
         this.routeLines = []; // Array to store route lines
         this.routeMarkers = []; // Array to store route markers
+        this.geoJSON = null;
+
+        //binde style to class
+        this.style = this.style.bind(this);
     }
 
     generateMap(){
@@ -16,7 +26,9 @@ export class PathTracker{
     }
 
     setTilePlayer(urlTemplate, options){
-        this.L.tileLayer(urlTemplate, options).addTo(this.map);
+        const osm = this.L.tileLayer(urlTemplate, options);
+        osm.addTo(this.map);
+        return osm;
     }
 
     setIcon(iconPath, iconShadowUrl = ''){
@@ -138,6 +150,72 @@ export class PathTracker{
         })
         .addTo(this.map);
     }
+
+    setLayers(baseLayersObj, overlayersObj){
+      this.L.control.layers(baseLayersObj, overlayersObj).addTo(this.map);
+    }
+
+    setSearchBtn(){
+      this.L.Control.geocoder().addTo(this.map);
+    }
+
+    setChoroplethMap(data, options){
+      if(options){
+        return this.L.geoJSON(data, options).addTo(this.map);
+      }else{
+        return this.L.geoJSON(data).addTo(this.map);
+      }
+    }
+
+    getColor(d) {
+      return d > 1000 ? '#800026' :
+             d > 500  ? '#BD0026' :
+             d > 200  ? '#E31A1C' :
+             d > 100  ? '#FC4E2A' :
+             d > 50   ? '#FD8D3C' :
+             d > 20   ? '#FEB24C' :
+             d > 10   ? '#FED976' :
+                        '#FFEDA0';
+  }
+
+  style(feature) {
+    return {
+        fillColor: this.getColor(feature.properties.density),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+highlightFeature = (e) => {
+  const layer = e.target;
+
+  layer.setStyle({
+      weight: 5,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.7
+  });
+
+
+  if (!this.L.Browser.ie && !this.L.Browser.opera && !this.L.Browser.edge) {
+  layer.bringToFront();
+  }
+  // console.log(this.info);
+  // this.info.update(layer.feature.properties);
+}
+
+resetHighlight = (e) => {
+  this.geoJSON?.resetStyle(e.target);
+  this.info.update();
+}
+
+zoomToFeature = (e) => {
+  console.log("this map", this.map);
+      this.map.fitBounds(e.target.getBounds());
+  }
     
       
 }
