@@ -44,52 +44,103 @@ export class PathTracker{
         return this.customMarkerIcon;
     }
 
-    moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination){
+    // moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination){
       
-      if (j < markerCount) {
-        if (!markerStatus[j]) {
-          const coordinateIndex = Math.min(i, coordinateCounts[j] - 1);
-          const coordinate = routeCoordinates[j][coordinateIndex];
-          const marker = this.routeMarkers[j];
-          marker.setLatLng(coordinate);
+    //   if (j < markerCount) {
+    //     if (!markerStatus[j]) {
+    //       const coordinateIndex = Math.min(i, coordinateCounts[j] - 1);
+    //       const coordinate = routeCoordinates[j][coordinateIndex];
+    //       const marker = this.routeMarkers[j];
+    //       marker.setLatLng(coordinate);
 
-          if (coordinateIndex === coordinateCounts[j] - 1) {
-            markerStatus[j] = true;
-            markersReachedDestination++;
-          }
-        }
-        j++;
-      }
+    //       if (coordinateIndex === coordinateCounts[j] - 1) {
+    //         markerStatus[j] = true;
+    //         markersReachedDestination++;
+    //       }
+    //     }
+    //     j++;
+    //   }
 
-      if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-        setTimeout(this.moveMarker.bind(this), 100, i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
-        i++;
-      } else {
-        i = 0;
-      }
+    //   if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+    //     setTimeout(this.moveMarker.bind(this), 100, i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
+    //     i++;
+    //   } else {
+    //     i = 0;
+    //   }
 
-      if (markersReachedDestination === markerCount) {
-        // All markers have reached their destinations
-        console.log("All markers reached their destinations. Animation stopped.");
-        return; // Stop the animation
-      }
-    }
+    //   if (markersReachedDestination === markerCount) {
+    //     // All markers have reached their destinations
+    //     console.log("All markers reached their destinations. Animation stopped.");
+    //     return; // Stop the animation
+    //   }
+    // }
 
+    // animateMarkerAlongRoute() {
+    //   if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
+    //     const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
+    //     const markerCount = this.routeMarkers.length;
+    //     const coordinateCounts = routeCoordinates.map((coords) => coords.length);
+    
+    //     const markerStatus = Array(markerCount).fill(false);
+    //     let markersReachedDestination = 0;
+    
+    //     let i = 0;
+    //     const animateMarker = () => {
+    //       let j = 0;
+  
+    //       this.moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
+    //       if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+    //         setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
+    //       }
+    //     };
+    
+    //     animateMarker();
+    //   }
+    // }
+    
     animateMarkerAlongRoute() {
       if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
         const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
         const markerCount = this.routeMarkers.length;
         const coordinateCounts = routeCoordinates.map((coords) => coords.length);
-    
+        
         const markerStatus = Array(markerCount).fill(false);
         let markersReachedDestination = 0;
     
         let i = 0;
         const animateMarker = () => {
           let j = 0;
-  
-          this.moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
-          if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+          const moveMarker = () => {
+            if (j < markerCount) {
+              if (!markerStatus[j]) {
+                const coordinateIndex = Math.min(i, coordinateCounts[j] - 1);
+                const coordinate = routeCoordinates[j][coordinateIndex];
+                const marker = this.routeMarkers[j];
+                marker.setLatLng(coordinate);
+    
+                if (coordinateIndex === coordinateCounts[j] - 1) {
+                  markerStatus[j] = true;
+                  markersReachedDestination++;
+                }
+              }
+              j++;
+            }
+    
+            if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+              setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
+              i++;
+            } else {
+              i = 0;
+            }
+    
+            if (markersReachedDestination === markerCount) {
+              // All markers have reached their destinations
+              console.log("All markers reached their destinations. Animation stopped.");
+            }
+          };
+    
+          moveMarker();
+          if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
             setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
           }
         };
@@ -97,7 +148,6 @@ export class PathTracker{
         animateMarker();
       }
     }
-    
     
     
     setRoutingControl(waypointsArr) {
