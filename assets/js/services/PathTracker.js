@@ -6,6 +6,7 @@ import { Map, tileLayer, control } from "leaflet";
 
 export class PathTracker{
     
+
     constructor(L){
         this.L = L;
         this.info = null;
@@ -15,6 +16,8 @@ export class PathTracker{
         this.routeLines = []; // Array to store route lines
         this.routeMarkers = []; // Array to store route markers
         this.geoJSON = null;
+
+        this.animationStopped = false;
 
         //binde style to class
         this.style = this.style.bind(this);
@@ -99,18 +102,25 @@ export class PathTracker{
     // }
     
     animateMarkerAlongRoute() {
+      this.animationStopped = false; // Reset the animationStopped flag
       if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
         const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
         const markerCount = this.routeMarkers.length;
         const coordinateCounts = routeCoordinates.map((coords) => coords.length);
-        
+    
         const markerStatus = Array(markerCount).fill(false);
         let markersReachedDestination = 0;
     
         let i = 0;
+    
         const animateMarker = () => {
           let j = 0;
+    
           const moveMarker = () => {
+            if (this.animationStopped) {
+              return; // Exit the function if animation is stopped
+            }
+    
             if (j < markerCount) {
               if (!markerStatus[j]) {
                 const coordinateIndex = Math.min(i, coordinateCounts[j] - 1);
@@ -140,7 +150,8 @@ export class PathTracker{
           };
     
           moveMarker();
-          if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+    
+          if (!this.animationStopped && i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
             setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
           }
         };
@@ -196,11 +207,29 @@ export class PathTracker{
           const animateButton = document.getElementById("animateButton");
           animateButton.addEventListener("click", () => {
             this.animateMarkerAlongRoute();
+            console.log("Animation started");
           });
+
+          const stopAnimateButton = document.getElementById("stopanimateButton");
+          stopAnimateButton.addEventListener("click", () => {
+            this.stopAnimation();
+            animateButton.textContent = "Restart"; // Change button text to "Restart"
+          });
+          
+          const restartAnimateButton = document.getElementById("restartanimateButton");
+          restartAnimateButton.addEventListener("click", () => {
+            this.animateMarkerAlongRoute(); // Start the animation again
+            animateButton.textContent = "Start"; // Change button text to "Start"
+          });
+
         })
         .addTo(this.map);
     }
 
+    stopAnimation() {
+      this.animationStopped = true;
+      console.log("Animation stopped.");
+    }
     setLayers(baseLayersObj, overlayersObj){
       this.L.control.layers(baseLayersObj, overlayersObj).addTo(this.map);
     }
