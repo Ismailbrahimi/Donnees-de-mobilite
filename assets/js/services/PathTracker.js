@@ -20,10 +20,11 @@ export class PathTracker{
         this.style = this.style.bind(this);
     }
 
-    generateMap(){
-        this.map = this.L.map("map").setView([51.505, -0.09], 4);
-        return this.map;
+    generateMap() {
+      this.map = this.L.map("map").setView([51.505, -0.09], 4);
+      return this.map;
     }
+    
 
     setTilePlayer(urlTemplate, options){
         const osm = this.L.tileLayer(urlTemplate, options);
@@ -76,9 +77,7 @@ export class PathTracker{
             if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
               setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
               i++;
-            } else {
-              i = 0;
-            }
+            } 
     
             if (markersReachedDestination === markerCount) {
               // All markers have reached their destinations
@@ -89,6 +88,10 @@ export class PathTracker{
           moveMarker();
           if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
             setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
+          }
+          else 
+          {
+            return ;
           }
         };
     

@@ -66,7 +66,7 @@ oopMap.setIcon("../marker.png");
 //         oopMap.L.latLng(48.1173, -1.6778), // Rennes
 //      ]);
 coordPairs.forEach(function(pair, index){
-    if(index > 3) return;
+    if(index > 14) return;
 
     oopMap.setRoutingControl([
         oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
@@ -181,8 +181,23 @@ oopMap.geoJSON = oopMap.setChoroplethMap(regions);
 
 function onEachFeature(feature, layer) {
     layer.on({
-        mouseover: oopMap.highlightFeature,
-        mouseout: oopMap.resetHighlight,
+        mouseover: function (e) {
+            var layer = e.target;
+            layer.setStyle({
+                weight: 2,
+                color: 'white',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                layer.bringToFront();
+            }
+            oopMap.info.update(layer.feature.properties);
+        },
+        mouseout: function (e) {
+            oopMap.geoJSON.resetStyle(e.target);
+            oopMap.info.update();
+        },
         click: oopMap.zoomToFeature
     });
 }
@@ -192,24 +207,21 @@ oopMap.geoJSON = oopMap.setChoroplethMap(regions, {
     onEachFeature: onEachFeature
 });
 
-// const info = oopMap.L.control();
 oopMap.info = oopMap.L.control();
 
 oopMap.info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this._div = L.DomUtil.create('div', 'info');
     this.update();
     return this._div;
 };
 
-// method that we will use to update the control based on feature properties passed
 oopMap.info.update = function (props) {
-    this._div.innerHTML = '<h4>FRANCE Population Density</h4>' +  (props ?
+    this._div.innerHTML = '<h4>FRANCE Population Density</h4>' + (props ?
         '<b>' + props.nom + '</b><br />' + props.density + ' people / mi<sup>2</sup>'
         : 'Hover over a department');
 };
 
 oopMap.info.addTo(map);
-
 // const legend = L.control({position: 'bottomright'});
 
 
