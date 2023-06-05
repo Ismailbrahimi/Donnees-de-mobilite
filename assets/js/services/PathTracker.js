@@ -82,6 +82,9 @@ export class PathTracker{
             if (markersReachedDestination === markerCount) {
               // All markers have reached their destinations
               console.log("All markers reached their destinations. Animation stopped.");
+              //color the map
+              console.log(this.geoJSON);
+              this.geoJSON.setStyle(this.style);
             }
           };
     
@@ -89,7 +92,7 @@ export class PathTracker{
           if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
             setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
           }else{
-            console.log("am done");
+            //console.log("am done");
             return;
           }
         };
