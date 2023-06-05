@@ -8,6 +8,7 @@ import {lineJSON} from "./line";
 import { PathTracker } from "./services/PathTracker";
 import * as Routing from "leaflet-routing-machine";
 import regions from "../data/regions.json";
+import coordPairs from "../data/coordPairs.json";
 
 
 //scss
@@ -49,21 +50,30 @@ const osm = oopMap.setTilePlayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}
 //set icon
 oopMap.setIcon("../marker.png");
 // set routing control
-oopMap.setRoutingControl(
-     [
-        oopMap.L.latLng(48.573405, 7.752111), // Strasbourg
-        oopMap.L.latLng(48.858222, 2.2945), // Paris
-     ]);
+// oopMap.setRoutingControl(
+//      [
+//         oopMap.L.latLng(48.573405, 7.752111), // Strasbourg
+//         oopMap.L.latLng(48.858222, 2.2945), // Paris
+//      ]);
 
-     oopMap.setRoutingControl([
-        oopMap.L.latLng(43.296482, 5.36978), // Marseille
-        oopMap.L.latLng(45.767, 4.833), // Lyon
-    ]);
+//      oopMap.setRoutingControl([
+//         oopMap.L.latLng(43.296482, 5.36978), // Marseille
+//         oopMap.L.latLng(45.767, 4.833), // Lyon
+//     ]);
+
+//     oopMap.setRoutingControl([
+//         oopMap.L.latLng(44.8378, -0.5792), // Bordeaux
+//         oopMap.L.latLng(48.1173, -1.6778), // Rennes
+//      ]);
+coordPairs.forEach(function(pair, index){
+    if(index > 3) return;
 
     oopMap.setRoutingControl([
-        oopMap.L.latLng(44.8378, -0.5792), // Bordeaux
-        oopMap.L.latLng(48.1173, -1.6778), // Rennes
+        oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
+        oopMap.L.latLng(pair.end.latitude, pair.end.longitude),
      ]);
+});
+
 
 
 
@@ -103,17 +113,6 @@ const linedata = oopMap.setChoroplethMap(lineJSON);
 // var pointdata = L.geoJSON(pointJSON).addTo(map);
 const pointdata = oopMap.setChoroplethMap(pointJSON);
 
-// var polygondata = L.geoJSON(polygonJSON,{
-//     onEachFeature: function(feature,layer){
-//         layer.bindPopup('<b>This is a </b>' + feature.properties.name)
-//     },
-//     style:{
-//         fillColor: 'red',
-//         fillOpacity:1,
-//         color: 'green'
-//     }
-// }).addTo(map);
-
 const polygondata = oopMap.setChoroplethMap(polygonJSON,{
     onEachFeature: function(feature,layer){
         layer.bindPopup('<b>This is a </b>' + feature.properties.name)
@@ -124,10 +123,6 @@ const polygondata = oopMap.setChoroplethMap(polygonJSON,{
         color: 'green'
     }
 });
-
-/*===================================================
-                      LAYER CONTROL               
-===================================================*/
 
 const baseLayers = {
     "Satellite":googleSat,
@@ -154,45 +149,12 @@ oopMap.setLayers(baseLayers, overlays)
 // L.Control.geocoder().addTo(map);
 oopMap.setSearchBtn();
 
-/*===================================================
-                      Choropleth Map               
-===================================================*/
-
-// L.geoJSON(regions).addTo(map);
 oopMap.setChoroplethMap(regions);
 
-// function getColor(d) {
-//     return d > 1000 ? '#800026' :
-//            d > 500  ? '#BD0026' :
-//            d > 200  ? '#E31A1C' :
-//            d > 100  ? '#FC4E2A' :
-//            d > 50   ? '#FD8D3C' :
-//            d > 20   ? '#FEB24C' :
-//            d > 10   ? '#FED976' :
-//                       '#FFEDA0';
-// }
-
-// function style(feature) {
-//     return {
-//         fillColor: oopMap.getColor(feature.properties.density),
-//         weight: 2,
-//         opacity: 1,
-//         color: 'white',
-//         dashArray: '3',
-//         fillOpacity: 0.7
-//     };
-// }
-
-// L.geoJson(regions, {style: style}).addTo(map);
+//the part that colors the regions
 oopMap.setChoroplethMap(regions, {style: oopMap.style});
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-// function resetHighlight(e) {
-//     geojson.resetStyle(e.target);
-//     info.update();
-// }
-
+//show density deg
 oopMap.legend = oopMap.L.control({position: 'bottomright'});
 
 oopMap.legend.onAdd = function (map) {
