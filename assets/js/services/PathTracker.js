@@ -49,6 +49,7 @@ export class PathTracker{
       if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
         const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
         const markerCount = this.routeMarkers.length;
+        console.log("i should be 3", markerCount);
         const coordinateCounts = routeCoordinates.map((coords) => coords.length);
         
         const markerStatus = Array(markerCount).fill(false);
@@ -72,12 +73,10 @@ export class PathTracker{
               }
               j++;
             }
-    
+          
             if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
               setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
               i++;
-            } else {
-              i = 0;
             }
     
             if (markersReachedDestination === markerCount) {
@@ -89,6 +88,9 @@ export class PathTracker{
           moveMarker();
           if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
             setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
+          }else{
+            console.log("am done");
+            return;
           }
         };
     
@@ -142,7 +144,7 @@ export class PathTracker{
           // Attach button click event to trigger marker animation
           const animateButton = document.getElementById("animateButton");
           animateButton.addEventListener("click", () => {
-            this.animateMarkerAlongRoute();
+            console.log(this.animateMarkerAlongRoute());
           });
         })
         .addTo(this.map);
