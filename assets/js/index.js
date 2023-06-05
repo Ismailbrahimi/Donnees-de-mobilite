@@ -50,29 +50,39 @@ const osm = oopMap.setTilePlayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}
 //set icon
 oopMap.setIcon("../marker.png");
 // set routing control
-// oopMap.setRoutingControl(
-//      [
-//         oopMap.L.latLng(48.573405, 7.752111), // Strasbourg
-//         oopMap.L.latLng(48.858222, 2.2945), // Paris
-//      ]);
+oopMap.setRoutingControl(
+     [
+        oopMap.L.latLng(48.573405, 7.752111), // Strasbourg
+        oopMap.L.latLng(48.858222, 2.2945), // Paris
+     ]);
 
-//      oopMap.setRoutingControl([
-//         oopMap.L.latLng(43.296482, 5.36978), // Marseille
-//         oopMap.L.latLng(45.767, 4.833), // Lyon
-//     ]);
-
+<<<<<<< HEAD
 //     oopMap.setRoutingControl([
 //         oopMap.L.latLng(44.8378, -0.5792), // Bordeaux
 //         oopMap.L.latLng(48.1173, -1.6778), // Rennes
 //      ]);
 coordPairs.forEach(function(pair, index){
     if(index > 14) return;
+=======
+>>>>>>> bab077137f6296af2eed1a11e76878020c77e539
 
     oopMap.setRoutingControl([
-        oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
-        oopMap.L.latLng(pair.end.latitude, pair.end.longitude),
+        oopMap.L.latLng(44.8378, -0.5792), // Bordeaux
+        oopMap.L.latLng(48.1173, -1.6778), // Rennes
      ]);
-});
+
+     oopMap.setRoutingControl([
+        oopMap.L.latLng(43.296482, 5.36978), // Marseille
+        oopMap.L.latLng(45.767, 4.833), // Lyon
+    ]);
+// coordPairs.forEach(function(pair, index){
+//     if(index > 3) return;
+
+//     oopMap.setRoutingControl([
+//         oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
+//         oopMap.L.latLng(pair.end.latitude, pair.end.longitude),
+//      ]);
+// });
 
 
 
@@ -152,7 +162,7 @@ oopMap.setSearchBtn();
 oopMap.setChoroplethMap(regions);
 
 //the part that colors the regions
-oopMap.setChoroplethMap(regions, {style: oopMap.style});
+// oopMap.setChoroplethMap(regions, {style: oopMap.style});
 
 //show density deg
 oopMap.legend = oopMap.L.control({position: 'bottomright'});
@@ -202,8 +212,9 @@ function onEachFeature(feature, layer) {
     });
 }
 
+
 oopMap.geoJSON = oopMap.setChoroplethMap(regions, {
-    style: oopMap.style,
+    //style: oopMap.style,
     onEachFeature: onEachFeature
 });
 

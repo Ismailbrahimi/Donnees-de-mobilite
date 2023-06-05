@@ -50,6 +50,7 @@ export class PathTracker{
       if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
         const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
         const markerCount = this.routeMarkers.length;
+        console.log("i should be 3", markerCount);
         const coordinateCounts = routeCoordinates.map((coords) => coords.length);
         
         const markerStatus = Array(markerCount).fill(false);
@@ -73,21 +74,31 @@ export class PathTracker{
               }
               j++;
             }
-    
+          
             if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
               setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
               i++;
+<<<<<<< HEAD
             } 
+=======
+            }
+>>>>>>> bab077137f6296af2eed1a11e76878020c77e539
     
             if (markersReachedDestination === markerCount) {
               // All markers have reached their destinations
               console.log("All markers reached their destinations. Animation stopped.");
+              //color the map
+              console.log(this.geoJSON);
+              this.geoJSON.setStyle(this.style);
             }
           };
     
           moveMarker();
           if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
             setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
+          }else{
+            //console.log("am done");
+            return;
           }
           else 
           {
@@ -145,7 +156,7 @@ export class PathTracker{
           // Attach button click event to trigger marker animation
           const animateButton = document.getElementById("animateButton");
           animateButton.addEventListener("click", () => {
-            this.animateMarkerAlongRoute();
+            console.log(this.animateMarkerAlongRoute());
           });
         })
         .addTo(this.map);
