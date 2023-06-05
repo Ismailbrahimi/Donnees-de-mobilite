@@ -78,11 +78,7 @@ export class PathTracker{
             if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
               setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
               i++;
-<<<<<<< HEAD
             } 
-=======
-            }
->>>>>>> bab077137f6296af2eed1a11e76878020c77e539
     
             if (markersReachedDestination === markerCount) {
               // All markers have reached their destinations
@@ -99,10 +95,6 @@ export class PathTracker{
           }else{
             //console.log("am done");
             return;
-          }
-          else 
-          {
-            return ;
           }
         };
     
