@@ -136,13 +136,19 @@ export class PathTracker{
               }
               j++;
             }
-    
+
+            console.log("---------------------");
+            console.log("i : ", i);
+            console.log("coordinateCounts", Math.max(...coordinateCounts) - 1);
+            console.log("markersReachedDestination", markersReachedDestination);
+            console.log("markerCount", markerCount);
+            console.log("---------------------");
+
             if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
               setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
               i++;
-            } else {
-              i = 0;
-            }
+            } 
+
     
             if (markersReachedDestination === markerCount) {
               // All markers have reached their destinations
@@ -204,7 +210,7 @@ export class PathTracker{
           }).addTo(this.map);
           this.routeMarkers.push(marker); // Store the marker in the routeMarkers array
     
-          // Attach button click event to trigger marker animation
+              // Attach button click event to trigger marker animation
           const animateButton = document.getElementById("animateButton");
           animateButton.addEventListener("click", () => {
             this.animateMarkerAlongRoute();
@@ -217,11 +223,14 @@ export class PathTracker{
             animateButton.textContent = "Restart"; // Change button text to "Restart"
           });
           
-          const restartAnimateButton = document.getElementById("restartanimateButton");
-          restartAnimateButton.addEventListener("click", () => {
-            this.animateMarkerAlongRoute(); // Start the animation again
-            animateButton.textContent = "Start"; // Change button text to "Start"
-          });
+          // const restartAnimateButton = document.getElementById("restartanimateButton");
+          //   restartAnimateButton.addEventListener("click", () => {
+          //     this.animateMarkerAlongRoute(); // Start the animation again
+          //     animateButton.textContent = "Start"; // Change button text to "Start"
+          //   });
+        
+
+
 
         })
         .addTo(this.map);
