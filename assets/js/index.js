@@ -18,12 +18,12 @@ import "bootstrap";
 import 'leaflet-control-geocoder';
 
 
-regions.features.forEach(element => {
-    const min = 10;
-    const max = 1000;
-    const randomdensity = Math.floor(Math.random() * (max - min + 1)) + min;
-    element.properties.density = randomdensity;
-});
+// regions.features.forEach(element => {
+//     const min = 10;
+//     const max = 1000;
+//     const randomdensity = Math.floor(Math.random() * (max - min + 1)) + min;
+//     element.properties.density = randomdensity;
+// });
 
 var isTracking = false;
     var toggleButton = document.getElementById("toggleButton");
@@ -57,7 +57,7 @@ oopMap.setIcon("../marker.png");
 //      ]);
 
  coordPairs.forEach(function(pair, index){
-     if(index > 14) return;
+     if(index > 3) return;
 
      oopMap.setRoutingControl([
          oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
@@ -124,9 +124,9 @@ const baseLayers = {
 
 const overlays = {
     //"Marker": singleMarker,
-    "PointData":pointdata,
-    "LineData":linedata,
-    "PolygonData":polygondata
+    // "PointData":pointdata,
+    // "LineData":linedata,
+    // "PolygonData":polygondata
 };
 
 // L.control.layers(baseLayers, overlays).addTo(map);
@@ -173,20 +173,21 @@ oopMap.geoJSON = oopMap.setChoroplethMap(regions);
 function onEachFeature(feature, layer) {
     layer.on({
         mouseover: function (e) {
-            var layer = e.target;
-            layer.setStyle({
-                weight: 2,
-                color: 'white',
-                dashArray: '',
-                fillOpacity: 0.7
-            });
+            const layer = e.target;
+            // layer.setStyle({
+            //     weight: 2,
+            //     color: 'white',
+            //     dashArray: '',
+            //     fillOpacity: 0.7
+            // });
+            layer.setStyle(oopMap.style);
             if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
                 layer.bringToFront();
             }
             oopMap.info.update(layer.feature.properties);
         },
         mouseout: function (e) {
-            oopMap.geoJSON.resetStyle(e.target);
+            oopMap.geoJSON.resetStyle(oopMap.style);
             oopMap.info.update();
         },
         click: oopMap.zoomToFeature
@@ -195,7 +196,7 @@ function onEachFeature(feature, layer) {
 
 
 oopMap.geoJSON = oopMap.setChoroplethMap(regions, {
-    //style: oopMap.style,
+    style: oopMap.style,
     onEachFeature: onEachFeature
 });
 

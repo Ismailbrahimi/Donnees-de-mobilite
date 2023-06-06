@@ -172,6 +172,7 @@ export class PathTracker{
     }
 
     getColor(d) {
+      console.log(d);
       return d > 1000 ? '#800026' :
              d > 500  ? '#BD0026' :
              d > 200  ? '#E31A1C' :
@@ -179,17 +180,17 @@ export class PathTracker{
              d > 50   ? '#FD8D3C' :
              d > 20   ? '#FEB24C' :
              d > 10   ? '#FED976' :
-                        '#FFEDA0';
+                        'rgba(255, 255, 255, 0.3)';
   }
 
   style(feature) {
     return {
         fillColor: this.getColor(feature.properties.density),
-        weight: 2,
+        weight: 1,
         opacity: 1,
         color: 'white',
         dashArray: '3',
-        fillOpacity: 0.7
+        fillOpacity: 0.3
     };
 }
 
