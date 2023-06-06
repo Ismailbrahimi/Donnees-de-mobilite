@@ -47,6 +47,7 @@ export class PathTracker{
     animateMarkerAlongRoute() {
       console.log(this.routeLines);
       if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
+        console.log(this.routeLines);
         const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
         const markerCount = this.routeMarkers.length;
         console.log("i should be 3", markerCount);
@@ -194,12 +195,13 @@ export class PathTracker{
 highlightFeature = (e) => {
   const layer = e.target;
 
-  layer.setStyle({
-      weight: 5,
-      color: '#666',
-      dashArray: '',
-      fillOpacity: 0.7
-  });
+  // layer.setStyle({
+  //     weight: 5,
+  //     color: '#666',
+  //     dashArray: '',
+  //     fillOpacity: 0.7
+  // });
+  layer.setStyle(this.style);
 
 
   if (!this.L.Browser.ie && !this.L.Browser.opera && !this.L.Browser.edge) {
@@ -210,7 +212,8 @@ highlightFeature = (e) => {
 }
 
 resetHighlight = (e) => {
-  this.geoJSON?.resetStyle(e.target);
+  //this.geoJSON?.resetStyle(e.target);
+  this.geoJSON?.resetStyle(this.style);
   this.info.update();
 }
 
