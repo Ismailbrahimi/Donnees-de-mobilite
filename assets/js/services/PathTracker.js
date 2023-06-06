@@ -6,6 +6,7 @@ import { Map, tileLayer, control } from "leaflet";
 
 export class PathTracker{
     
+
     constructor(L){
         this.L = L;
         this.info = null;
@@ -16,17 +17,16 @@ export class PathTracker{
         this.routeMarkers = []; // Array to store route markers
         this.geoJSON = null;
 
-        this.animationPaused = false; // Flag variable to track animation status
+        this.animationStopped = false;
 
         //binde style to class
         this.style = this.style.bind(this);
     }
 
-    generateMap() {
-      this.map = this.L.map("map").setView([51.505, -0.09], 4);
-      return this.map;
+    generateMap(){
+        this.map = this.L.map("map").setView([51.505, -0.09], 4);
+        return this.map;
     }
-    
 
     setTilePlayer(urlTemplate, options){
         const osm = this.L.tileLayer(urlTemplate, options);
@@ -46,22 +46,81 @@ export class PathTracker{
         });
         return this.customMarkerIcon;
     }
+
+    // moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination){
+      
+    //   if (j < markerCount) {
+    //     if (!markerStatus[j]) {
+    //       const coordinateIndex = Math.min(i, coordinateCounts[j] - 1);
+    //       const coordinate = routeCoordinates[j][coordinateIndex];
+    //       const marker = this.routeMarkers[j];
+    //       marker.setLatLng(coordinate);
+
+    //       if (coordinateIndex === coordinateCounts[j] - 1) {
+    //         markerStatus[j] = true;
+    //         markersReachedDestination++;
+    //       }
+    //     }
+    //     j++;
+    //   }
+
+    //   if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+    //     setTimeout(this.moveMarker.bind(this), 100, i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
+    //     i++;
+    //   } else {
+    //     i = 0;
+    //   }
+
+    //   if (markersReachedDestination === markerCount) {
+    //     // All markers have reached their destinations
+    //     console.log("All markers reached their destinations. Animation stopped.");
+    //     return; // Stop the animation
+    //   }
+    // }
+
+    // animateMarkerAlongRoute() {
+    //   if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
+    //     const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
+    //     const markerCount = this.routeMarkers.length;
+    //     const coordinateCounts = routeCoordinates.map((coords) => coords.length);
+    
+    //     const markerStatus = Array(markerCount).fill(false);
+    //     let markersReachedDestination = 0;
+    
+    //     let i = 0;
+    //     const animateMarker = () => {
+    //       let j = 0;
+  
+    //       this.moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
+    //       if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+    //         setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
+    //       }
+    //     };
+    
+    //     animateMarker();
+    //   }
+    // }
     
     animateMarkerAlongRoute() {
-      console.log(this.routeLines);
+      this.animationStopped = false; // Reset the animationStopped flag
       if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
         const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
         const markerCount = this.routeMarkers.length;
-        console.log("i should be 3", markerCount);
         const coordinateCounts = routeCoordinates.map((coords) => coords.length);
-        
+    
         const markerStatus = Array(markerCount).fill(false);
         let markersReachedDestination = 0;
     
         let i = 0;
+    
         const animateMarker = () => {
           let j = 0;
+    
           const moveMarker = () => {
+            if (this.animationStopped) {
+              return; // Exit the function if animation is stopped
+            }
+    
             if (j < markerCount) {
               if (!markerStatus[j]) {
                 const coordinateIndex = Math.min(i, coordinateCounts[j] - 1);
@@ -76,29 +135,24 @@ export class PathTracker{
               }
               j++;
             }
-          
+    
             if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-              if (!this.animationPaused) {
-                setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
-                i++;
-              }
-            } 
+              setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
+              i++;
+            } else {
+              i = 0;
+            }
     
             if (markersReachedDestination === markerCount) {
               // All markers have reached their destinations
               console.log("All markers reached their destinations. Animation stopped.");
-              //color the map
-              console.log(this.geoJSON);
-              this.geoJSON.setStyle(this.style);
             }
           };
     
           moveMarker();
-          if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
+    
+          if (!this.animationStopped && i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
             setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
-          }else{
-            //console.log("am done");
-            return;
           }
         };
     
@@ -152,20 +206,30 @@ export class PathTracker{
           // Attach button click event to trigger marker animation
           const animateButton = document.getElementById("animateButton");
           animateButton.addEventListener("click", () => {
-            console.log(this.animateMarkerAlongRoute());
+            this.animateMarkerAlongRoute();
+            console.log("Animation started");
           });
 
-          const pauseButton = document.getElementById("pauseButton");
-          pauseButton.addEventListener("click", () => {
-            this.animationPaused = true; // Set the animation flag to pause the animation
-            animateButton.textContent = "Restart";
+          const stopAnimateButton = document.getElementById("stopanimateButton");
+          stopAnimateButton.addEventListener("click", () => {
+            this.stopAnimation();
+            animateButton.textContent = "Restart"; // Change button text to "Restart"
+          });
+          
+          const restartAnimateButton = document.getElementById("restartanimateButton");
+          restartAnimateButton.addEventListener("click", () => {
+            this.animateMarkerAlongRoute(); // Start the animation again
+            animateButton.textContent = "Start"; // Change button text to "Start"
           });
 
         })
         .addTo(this.map);
     }
-    
 
+    stopAnimation() {
+      this.animationStopped = true;
+      console.log("Animation stopped.");
+    }
     setLayers(baseLayersObj, overlayersObj){
       this.L.control.layers(baseLayersObj, overlayersObj).addTo(this.map);
     }
