@@ -23,6 +23,7 @@
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.4",
     "css-minimizer-webpack-plugin": "^5.0.0",
+    "esri-leaflet": "^3.0.10",
     "leaflet": "^1.9.3",
     "leaflet-control-geocoder": "^2.4.0",
     "mini-css-extract-plugin": "^2.7.5",
