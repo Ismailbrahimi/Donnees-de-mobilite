@@ -16,6 +16,8 @@ export class PathTracker{
         this.routeMarkers = []; // Array to store route markers
         this.geoJSON = null;
 
+        this.animationPaused = false; // Flag variable to track animation status
+
         //binde style to class
         this.style = this.style.bind(this);
     }
@@ -76,8 +78,10 @@ export class PathTracker{
             }
           
             if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-              setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
-              i++;
+              if (!this.animationPaused) {
+                setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
+                i++;
+              }
             } 
     
             if (markersReachedDestination === markerCount) {
@@ -150,9 +154,17 @@ export class PathTracker{
           animateButton.addEventListener("click", () => {
             console.log(this.animateMarkerAlongRoute());
           });
+
+          const pauseButton = document.getElementById("pauseButton");
+          pauseButton.addEventListener("click", () => {
+            this.animationPaused = true; // Set the animation flag to pause the animation
+            animateButton.textContent = "Restart";
+          });
+
         })
         .addTo(this.map);
     }
+    
 
     setLayers(baseLayersObj, overlayersObj){
       this.L.control.layers(baseLayersObj, overlayersObj).addTo(this.map);

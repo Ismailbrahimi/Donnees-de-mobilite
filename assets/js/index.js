@@ -57,7 +57,7 @@ oopMap.setIcon("../marker.png");
 //      ]);
 
  coordPairs.forEach(function(pair, index){
-     if(index > 14) return;
+     if(index > 2) return;
 
      oopMap.setRoutingControl([
          oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
