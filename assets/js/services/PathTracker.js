@@ -16,6 +16,7 @@ export class PathTracker {
     this.routeLines = []; // Array to store route lines
     this.routeMarkers = []; // Array to store route markers
     this.geoJSON = null;
+    this.regions = null;
 
     this.animationStopped = false;
 
@@ -47,66 +48,11 @@ export class PathTracker {
     return this.customMarkerIcon;
   }
 
-  // moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination){
-
-  //   if (j < markerCount) {
-  //     if (!markerStatus[j]) {
-  //       const coordinateIndex = Math.min(i, coordinateCounts[j] - 1);
-  //       const coordinate = routeCoordinates[j][coordinateIndex];
-  //       const marker = this.routeMarkers[j];
-  //       marker.setLatLng(coordinate);
-
-  //       if (coordinateIndex === coordinateCounts[j] - 1) {
-  //         markerStatus[j] = true;
-  //         markersReachedDestination++;
-  //       }
-  //     }
-  //     j++;
-  //   }
-
-  //   if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-  //     setTimeout(this.moveMarker.bind(this), 100, i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
-  //     i++;
-  //   } else {
-  //     i = 0;
-  //   }
-
-  //   if (markersReachedDestination === markerCount) {
-  //     // All markers have reached their destinations
-  //     console.log("All markers reached their destinations. Animation stopped.");
-  //     return; // Stop the animation
-  //   }
-  // }
-
-  // animateMarkerAlongRoute() {
-  //   if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
-  //     const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
-  //     const markerCount = this.routeMarkers.length;
-  //     const coordinateCounts = routeCoordinates.map((coords) => coords.length);
-
-  //     const markerStatus = Array(markerCount).fill(false);
-  //     let markersReachedDestination = 0;
-
-  //     let i = 0;
-  //     const animateMarker = () => {
-  //       let j = 0;
-
-  //       this.moveMarker(i, j, routeCoordinates, markerCount, coordinateCounts, markerStatus, markersReachedDestination);
-  //       if (i <= Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-  //         setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
-  //       }
-  //     };
-
-  //     animateMarker();
-  //   }
-  // }
-
   animateMarkerAlongRoute() {
     this.animationStopped = false; // Reset the animationStopped flag
     if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
-      console.log(this.routeLines);
-
-      const routeCoordinates = this.routeLines.map((route) => route.getLatLngs());
+      const destinations = this.routeLines.map((route) => route.city);
+      const routeCoordinates = this.routeLines.map((route) => route.line.getLatLngs());
       const markerCount = this.routeMarkers.length;
       const coordinateCounts = routeCoordinates.map((coords) => coords.length);
 
@@ -132,8 +78,14 @@ export class PathTracker {
 
               if (coordinateIndex === coordinateCounts[j] - 1) {
                 markerStatus[j] = true;
-                console.log("am marker ", marker);
+                console.log("am destination ", destinations[j]);
                 markersReachedDestination++;
+
+                this.regions.features.forEach(feature => {
+                  if (feature.properties.nom === destinations[j]) {
+                    feature.properties.density += 100; // Update the density value to your desired value
+                  }
+                });
               }
             }
             j++;
@@ -148,6 +100,7 @@ export class PathTracker {
           if (markersReachedDestination === markerCount) {
             // All markers have reached their destinations
             console.log("All markers reached their destinations. Animation stopped.");
+            this.geoJSON.setStyle(this.style);
           }
         };
 
@@ -166,16 +119,12 @@ export class PathTracker {
   setRoutingControl(waypointsArr) {
     return this.L.Routing.control({
 
-      cities: waypointsArr.map((waypoint) => waypoint.endCity),
-      waypoints: waypointsArr.map((waypoint) => L.latLng(waypoint.latLng.lat, waypoint.latLng.lng)),
+      waypoints: waypointsArr.waypoints,
       createMarker: (i, waypoint, n) => {
         // Create a custom marker with additional information
         const marker = this.L.marker(waypoint.latLng, {
           icon: this.customMarkerIcon
         });
-
-        // Bind a popup with the city name and end city information
-        marker.bindPopup(`<b>Start:</b> ${waypoint.name}<br><b>End:</b> ${waypoint.endCity}`);
 
         return marker;
       },
@@ -203,9 +152,8 @@ export class PathTracker {
         const line = this.L.polyline(route.coordinates, {
           color: randomColor,
         }).addTo(this.map);
-        console.log("line", line);
 
-        this.routeLines.push(line); // Store the line in the routeLines array
+        this.routeLines.push({city: waypointsArr.city, line}); // Store the line in the routeLines array
 
         // Add the animated marker to the map
         const marker = this.L.marker(route.coordinates[0], {
