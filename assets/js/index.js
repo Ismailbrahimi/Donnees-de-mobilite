@@ -56,15 +56,15 @@ oopMap.setIcon("../marker.png");
 //         oopMap.L.latLng(48.1173, -1.6778), // Rennes
 //      ]);
 
- coordPairs.forEach(function(pair, index){
-     if(index > 3) return;
+//  coordPairs.forEach(function(pair, index){
+//      if(index > 3) return;
 
-     oopMap.setRoutingControl([
-         oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
-         oopMap.L.latLng(pair.end.latitude, pair.end.longitude),
-      ]);
- });
-
+//      oopMap.setRoutingControl([
+//          oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
+//          oopMap.L.latLng(pair.end.latitude, pair.end.longitude),
+//       ]);
+//  });
+oopMap.setRoutingControl(coordPairs);
 
 
 
