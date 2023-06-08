@@ -3,12 +3,48 @@
     "latLng": { "lat": 48.8566, "lng": 2.3522 },
     "name": "Paris",
     "endLatLng": { "lat": 50.6292, "lng": 3.0573 },
-    "endCity": "Bas-Rhin"
+    "endCity": "Nord"
   },
   {
     "latLng": { "lat": 45.7578, "lng": 4.8357 },
     "name": "Lyon",
+    "endLatLng": { "lat": 48.5833, "lng": -3.0833 },
+    "endCity": "Côtes-d'Armor"
+  },
+  {
+    "latLng": { "lat": 43.6047, "lng": 1.4442 },
+    "name": "Toulouse",
     "endLatLng": { "lat": 47.7494, "lng": 7.3395 },
+    "endCity": "Haut-Rhin"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Nantes",
+    "endLatLng": { "lat": 48.7139, "lng": -1.7231 },
+    "endCity": "Manche"
+  },
+  {
+    "latLng": { "lat": 48.1173, "lng": -1.6778 },
+    "name": "Rennes",
+    "endLatLng": { "lat": 48.0699, "lng": -1.7169 },
     "endCity": "Ille-et-Vilaine"
+  },
+  {
+    "latLng": { "lat": 49.6116, "lng": 6.1319 },
+    "name": "Luxembourg City",
+    "endLatLng": { "lat": 47.9975, "lng": -4.0975 },
+    "endCity": "Finistère"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Paris",
+    "endLatLng": { "lat": 48.5833, "lng": -3.0833 },
+    "endCity": "Côtes-d'Armor"
+  },
+  {
+    "latLng": { "lat": 43.2965, "lng": 5.3698 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 47.3876, "lng": 0.6942 },
+    "endCity": "Indre-et-Loire"
   }
 ]
