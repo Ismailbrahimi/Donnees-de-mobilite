@@ -2,14 +2,15 @@
 @import "../../node_modules/leaflet/dist/leaflet.css";
 @import "../../node_modules/leaflet-control-geocoder/dist/Control.Geocoder.css";
 
-#map { height: 500px; max-width: 100%; margin: auto; }
 .leaflet-routing-container {
     display: none;
   }
 
   #map{
-    height: 100vh;
-    width: 90%;
+    margin-top: 100px;
+    padding-top: 80px;
+    height: 550px;
+    width: 1050px;
     float: left;
 }
 
