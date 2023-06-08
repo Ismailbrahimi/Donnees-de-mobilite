@@ -18,13 +18,6 @@ import "bootstrap";
 import 'leaflet-control-geocoder';
 
 
-// regions.features.forEach(element => {
-//     const min = 10;
-//     const max = 1000;
-//     const randomdensity = Math.floor(Math.random() * (max - min + 1)) + min;
-//     element.properties.density = randomdensity;
-// });
-
 var isTracking = false;
     var toggleButton = document.getElementById("toggleButton");
 
@@ -41,6 +34,7 @@ var isTracking = false;
 
 
 const oopMap = new PathTracker(L);
+oopMap.regions = regions;
 const map = oopMap.generateMap();
 const osm = oopMap.setTilePlayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -49,22 +43,16 @@ const osm = oopMap.setTilePlayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}
 
 //set icon
 oopMap.setIcon("../marker.png");
-// set routing control
 
-//     oopMap.setRoutingControl([
-//         oopMap.L.latLng(44.8378, -0.5792), // Bordeaux
-//         oopMap.L.latLng(48.1173, -1.6778), // Rennes
-//      ]);
+
 
  coordPairs.forEach(function(pair, index){
-     if(index > 14) return;
-
-     oopMap.setRoutingControl([
-         oopMap.L.latLng(pair.start.latitude, pair.start.longitude), 
-         oopMap.L.latLng(pair.end.latitude, pair.end.longitude),
-      ]);
+     if(index > 3) return;
+     oopMap.setRoutingControl({city: pair.endCity, waypoints: [
+        oopMap.L.latLng(pair.latLng.lat, pair.latLng.lng), // Bordeaux
+        oopMap.L.latLng(pair.endLatLng.lat, pair.endLatLng.lng), // Rennes 
+     ]});
  });
-
 
 
 
@@ -140,7 +128,7 @@ oopMap.setLayers(baseLayers, overlays)
 // L.Control.geocoder().addTo(map);
 oopMap.setSearchBtn();
 
-oopMap.setChoroplethMap(regions);
+oopMap.setChoroplethMap(oopMap.regions);
 
 //the part that colors the regions
 // oopMap.setChoroplethMap(regions, {style: oopMap.style});
@@ -168,7 +156,7 @@ oopMap.legend.addTo(map);
 
 //##################
 
-oopMap.geoJSON = oopMap.setChoroplethMap(regions);
+oopMap.geoJSON = oopMap.setChoroplethMap(oopMap.regions);
 
 function onEachFeature(feature, layer) {
     layer.on({
@@ -195,7 +183,7 @@ function onEachFeature(feature, layer) {
 }
 
 
-oopMap.geoJSON = oopMap.setChoroplethMap(regions, {
+oopMap.geoJSON = oopMap.setChoroplethMap(oopMap.regions, {
     style: oopMap.style,
     onEachFeature: onEachFeature
 });
