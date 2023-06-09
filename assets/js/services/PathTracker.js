@@ -115,21 +115,34 @@ export class PathTracker {
     }
   }
 
-
   setRoutingControl(waypointsArr) {
     return this.L.Routing.control({
-
       waypoints: waypointsArr.waypoints,
+      // createMarker: (i, waypoint, n) => {
+      //   // Create a custom marker with additional information
+      //   const marker = this.L.marker(waypoint.latLng, {
+      //     icon: this.customMarkerIcon
+      //   });
+  
+      //   return marker;
+      // },
       createMarker: (i, waypoint, n) => {
-        // Create a custom marker with additional information
+        // Skip creating markers for the starting and destination coordinates
+        if (i === 0 || i === n - 1) {
+          return null;
+        }
+  
+        // Create a custom marker with additional information and icon size
         const marker = this.L.marker(waypoint.latLng, {
-          icon: this.customMarkerIcon
+          icon: this.customMarkerIcon,
+          iconSize: [2, 2] // Customize the icon size as per your requirement
         });
-
+  
         return marker;
       },
       router: new this.L.Routing.osrmv1({
-        serviceUrl: "https://router.project-osrm.org/route/v1",
+        //serviceUrl: "https://router.project-osrm.org/route/v1", // public api
+        serviceUrl: "http://127.0.0.1:5000/route/v1",
         language: "en",
         routeWhileDragging: true,
       }),
@@ -142,50 +155,45 @@ export class PathTracker {
           return "Pair: " + latLng.lat.toFixed(6) + ", " + latLng.lng.toFixed(6);
         },
       }),
+      lineOptions: {
+        // Disable automatic map zooming
+        zoomControl: false
+      },
+      fitSelectedRoutes: false // Disable automatic zooming and fitting the selected route
     })
-      .on("routeselected", (e) => {
-        const route = e.route;
-        // Generate a random color for the path polyline
-        const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-
-        // Add the route polyline to the map with the random color
-        const line = this.L.polyline(route.coordinates, {
-          color: randomColor,
-        }).addTo(this.map);
-
-        this.routeLines.push({city: waypointsArr.city, line}); // Store the line in the routeLines array
-
-        // Add the animated marker to the map
-        const marker = this.L.marker(route.coordinates[0], {
-          icon: this.customMarkerIcon,
-        }).addTo(this.map);
-        this.routeMarkers.push(marker); // Store the marker in the routeMarkers array
-
-        // Attach button click event to trigger marker animation
-        const animateButton = document.getElementById("animateButton");
-        animateButton.addEventListener("click", () => {
-          this.animateMarkerAlongRoute();
-        });
-
-        const stopAnimateButton = document.getElementById("stopanimateButton");
-        stopAnimateButton.addEventListener("click", () => {
-          this.stopAnimation();
-          animateButton.textContent = "Restart"; // Change button text to "Restart"
-        });
-
-        // const restartAnimateButton = document.getElementById("restartanimateButton");
-        //   restartAnimateButton.addEventListener("click", () => {
-        //     this.animateMarkerAlongRoute(); // Start the animation again
-        //     animateButton.textContent = "Start"; // Change button text to "Start"
-        //   });
-
-
-
-
-      })
-      .addTo(this.map);
+    .on("routeselected", (e) => {
+      const route = e.route;
+      // Generate a random color for the path polyline
+      const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  
+      // Add the route polyline to the map with the random color
+      const line = this.L.polyline(route.coordinates, {
+        color: randomColor,
+      }).addTo(this.map);
+  
+      this.routeLines.push({ city: waypointsArr.city, line }); // Store the line in the routeLines array
+  
+      // Add the animated marker to the map
+      const marker = this.L.marker(route.coordinates[0], {
+        icon: this.customMarkerIcon,
+      }).addTo(this.map);
+      this.routeMarkers.push(marker); // Store the marker in the routeMarkers array
+  
+      // Attach button click event to trigger marker animation
+      const animateButton = document.getElementById("animateButton");
+      animateButton.addEventListener("click", () => {
+        this.animateMarkerAlongRoute();
+      });
+  
+      const stopAnimateButton = document.getElementById("stopanimateButton");
+      stopAnimateButton.addEventListener("click", () => {
+        this.stopAnimation();
+        animateButton.textContent = "Restart"; // Change button text to "Restart"
+      });
+    })
+    .addTo(this.map);
   }
-
+  
   stopAnimation() {
     this.animationStopped = true;
     console.log("Animation stopped.");
@@ -224,7 +232,7 @@ export class PathTracker {
       opacity: 1,
       color: 'white',
       dashArray: '3',
-      fillOpacity: 0.3
+      fillOpacity: 1
     };
   }
 
