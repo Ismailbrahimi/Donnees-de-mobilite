@@ -48,6 +48,12 @@ export class PathTracker {
     return this.customMarkerIcon;
   }
 
+   hideMarkers() {
+    for (const marker of this.routeMarkers) {
+      this.map.removeLayer(marker);
+    }
+  }
+
   animateMarkerAlongRoute() {
     this.animationStopped = false; // Reset the animationStopped flag
     if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
@@ -68,6 +74,13 @@ export class PathTracker {
           if (this.animationStopped) {
             return; // Exit the function if animation is stopped
           }
+          // console.log("--------------------------");
+          // console.log("i : ", i);
+          // console.log("current desttination: ", j);
+          // console.log(" max coord count : ", Math.max(...coordinateCounts) - 1);
+          //  console.log("markersReachedDestination: ", markersReachedDestination);
+          //  console.log("markerCount: ", markerCount);
+          // console.log("--------------------------");
 
           if (j < markerCount) {
             if (!markerStatus[j]) {
@@ -76,14 +89,18 @@ export class PathTracker {
               const marker = this.routeMarkers[j];
               marker.setLatLng(coordinate);
 
+             // console.log("current coord pair; ",j, " object: ", this.routeLines[j]);
+
               if (coordinateIndex === coordinateCounts[j] - 1) {
                 markerStatus[j] = true;
-                console.log("am destination ", destinations[j]);
+                //console.log("am destination ", destinations[j]);
                 markersReachedDestination++;
 
                 this.regions.features.forEach(feature => {
                   if (feature.properties.nom === destinations[j]) {
                     feature.properties.density += 100; // Update the density value to your desired value
+                    this.geoJSON.setStyle(this.style);
+
                   }
                 });
               }
@@ -92,7 +109,7 @@ export class PathTracker {
           }
 
           if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-            setTimeout(moveMarker, 100); // Adjust the delay to control animation speed
+            setTimeout(moveMarker, 10); // Adjust the delay to control animation speed
             i++;
           }
 
@@ -189,6 +206,11 @@ export class PathTracker {
       stopAnimateButton.addEventListener("click", () => {
         this.stopAnimation();
         animateButton.textContent = "Restart"; // Change button text to "Restart"
+      });
+
+      const hideMarkersButton = document.getElementById("hideMarkersButton");
+      hideMarkersButton.addEventListener("click", () => {
+        this.hideMarkers();
       });
     })
     .addTo(this.map);

@@ -1,6 +1,6 @@
 
 import * as L from "leaflet";
-import {nepaldataa} from "./nepaldata";
+// import {nepaldataa} from "./nepaldata";
 import {pointJSON} from "./point";
 import {polygonJSON} from "./polygon";
 import {lineJSON} from "./line";
@@ -47,11 +47,13 @@ oopMap.setIcon("../marker.png");
 
 
  coordPairs.forEach(function(pair, index){
-     if(index > 30) return;
-     oopMap.setRoutingControl({city: pair.endCity, waypoints: [
-        oopMap.L.latLng(pair.latLng.lat, pair.latLng.lng), // Bordeaux
-        oopMap.L.latLng(pair.endLatLng.lat, pair.endLatLng.lng), // Rennes 
-     ]});
+     //if(index > 30) return;
+     //if(index > 80 && index < 100){
+        oopMap.setRoutingControl({city: pair.endCity, waypoints: [
+            oopMap.L.latLng(pair.latLng.lat, pair.latLng.lng), // Bordeaux
+            oopMap.L.latLng(pair.endLatLng.lat, pair.endLatLng.lng), // Rennes 
+         ]});
+     //}
  });
 
 

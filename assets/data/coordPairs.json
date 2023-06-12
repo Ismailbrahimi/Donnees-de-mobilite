@@ -60,24 +60,6 @@
     "endCity": "Haut-Rhin"
   },
   {
-    "latLng": { "lat": 48.2491, "lng": 7.4048 },
-    "name": "Obernai",
-    "endLatLng": { "lat": 48.3667, "lng": 7.4122 },
-    "endCity": "Bas-Rhin"
-  },
-  {
-    "latLng": { "lat": 48.2926, "lng": 7.4246 },
-    "name": "Colmar",
-    "endLatLng": { "lat": 48.0816, "lng": 7.3492 },
-    "endCity": "Haut-Rhin"
-  },
-  {
-    "latLng": { "lat": 48.4393, "lng": 7.4248 },
-    "name": "Sélestat",
-    "endLatLng": { "lat": 48.4389, "lng": 7.5732 },
-    "endCity": "Bas-Rhin"
-  },
-  {
     "latLng": { "lat": 47.7844, "lng": 7.3658 },
     "name": "Mulhouse",
     "endLatLng": { "lat": 47.8254, "lng": 7.3220 },
@@ -171,12 +153,6 @@
     "latLng": { "lat": 48.5521, "lng": 7.7580 },
     "name": "Strasbourg",
     "endLatLng": { "lat": 48.6306, "lng": 7.7916 },
-    "endCity": "Bas-Rhin"
-  },
-  {
-    "latLng": { "lat": 48.3625, "lng": 7.4044 },
-    "name": "Obernai",
-    "endLatLng": { "lat": 48.3461, "lng": 7.3716 },
     "endCity": "Bas-Rhin"
   },
   {
@@ -286,30 +262,6 @@
     "name": "Colmar",
     "endLatLng": { "lat": 48.0992, "lng": 7.3203 },
     "endCity": "Haut-Rhin"
-  },
-  {
-    "latLng": { "lat": 48.5485, "lng": 7.5957 },
-    "name": "Sélestat",
-    "endLatLng": { "lat": 48.5431, "lng": 7.5348 },
-    "endCity": "Bas-Rhin"
-  },
-  {
-    "latLng": { "lat": 47.6429, "lng": 7.3384 },
-    "name": "Mulhouse",
-    "endLatLng": { "lat": 47.6341, "lng": 7.3151 },
-    "endCity": "Haut-Rhin"
-  },
-  {
-    "latLng": { "lat": 48.4919, "lng": 7.7571 },
-    "name": "Strasbourg",
-    "endLatLng": { "lat": 48.5184, "lng": 7.6893 },
-    "endCity": "Bas-Rhin"
-  },
-  {
-    "latLng": { "lat": 48.3986, "lng": 7.3350 },
-    "name": "Obernai",
-    "endLatLng": { "lat": 48.4512, "lng": 7.4111 },
-    "endCity": "Bas-Rhin"
   },
   {
     "latLng": { "lat": 48.1092, "lng": 7.3599 },
@@ -874,6 +826,319 @@
     "name": "Strasbourg",
     "endLatLng": { "lat": 48.6134, "lng": 7.8540 },
     "endCity": "Bas-Rhin"
+  },
+  
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Paris",
+    "endLatLng": { "lat": 48.8567, "lng": 2.3518 },
+    "endCity": "Paris"
+  },
+  {
+    "latLng": { "lat": 48.6921, "lng": 6.1844 },
+    "name": "Nancy",
+    "endLatLng": { "lat": 48.6936, "lng": 6.1827 },
+    "endCity": "Meurthe-et-Moselle"
+  },
+  {
+    "latLng": { "lat": 45.7640, "lng": 4.8357 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7642, "lng": 4.8357 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 48.5734, "lng": -1.5020 },
+    "name": "Rennes",
+    "endLatLng": { "lat": 48.5726, "lng": -1.5042 },
+    "endCity": "Ille-et-Vilaine"
+  },
+  {
+    "latLng": { "lat": 50.6310, "lng": 3.0597 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6313, "lng": 3.0596 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.6047, "lng": 1.4442 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6045, "lng": 1.4423 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 43.2965, "lng": 5.3690 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2965, "lng": 5.3691 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 48.1173, "lng": -1.6778 },
+    "name": "Rennes",
+    "endLatLng": { "lat": 48.1173, "lng": -1.6777 },
+    "endCity": "Ille-et-Vilaine"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Nantes",
+    "endLatLng": { "lat": 47.2185, "lng": -1.5534 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 48.5730, "lng": 7.7521 },
+    "name": "Strasbourg",
+    "endLatLng": { "lat": 48.5730, "lng": 7.7524 },
+    "endCity": "Bas-Rhin"
+  },
+  {
+    "latLng": { "lat": 50.6333, "lng": 3.0667 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6333, "lng": 3.0665 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.6045, "lng": 1.4440 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6046, "lng": 1.4427 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 45.7579, "lng": 4.8359 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7580, "lng": 4.8357 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 43.2922, "lng": 5.3694 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2923, "lng": 5.3694 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 49.0563, "lng": 2.3731 },
+    "name": "Paris",
+    "endLatLng": { "lat": 49.0566, "lng": 2.3736 },
+    "endCity": "Val-d'Oise"
+  },
+  {
+    "latLng": { "lat": 48.6975, "lng": 6.1827 },
+    "name": "Nancy",
+    "endLatLng": { "lat": 48.6976, "lng": 6.1827 },
+    "endCity": "Meurthe-et-Moselle"
+  },
+  {
+    "latLng": { "lat": 50.6341, "lng": 3.0619 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6341, "lng": 3.0622 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.6043, "lng": 1.4438 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6044, "lng": 1.4424 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 45.7596, "lng": 4.8373 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7597, "lng": 4.8369 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 43.2933, "lng": 5.3701 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2933, "lng": 5.3702 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 49.0561, "lng": 2.3706 },
+    "name": "Paris",
+    "endLatLng": { "lat": 49.0565, "lng": 2.3710 },
+    "endCity": "Val-d'Oise"
+  },
+  {
+    "latLng": { "lat": 48.6934, "lng": 6.1855 },
+    "name": "Nancy",
+    "endLatLng": { "lat": 48.6936, "lng": 6.1853 },
+    "endCity": "Meurthe-et-Moselle"
+  },
+  {
+    "latLng": { "lat": 50.6322, "lng": 3.0637 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6322, "lng": 3.0635 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.6053, "lng": 1.4448 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6053, "lng": 1.4446 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 45.7593, "lng": 4.8364 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7594, "lng": 4.8366 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 43.2944, "lng": 5.3687 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2942, "lng": 5.3687 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 48.1172, "lng": -1.6790 },
+    "name": "Rennes",
+    "endLatLng": { "lat": 48.1173, "lng": -1.6790 },
+    "endCity": "Ille-et-Vilaine"
+  },
+  {
+    "latLng": { "lat": 47.2169, "lng": -1.5546 },
+    "name": "Nantes",
+    "endLatLng": { "lat": 47.2169, "lng": -1.5544 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 48.5742, "lng": 7.7510 },
+    "name": "Strasbourg",
+    "endLatLng": { "lat": 48.5742, "lng": 7.7507 },
+    "endCity": "Bas-Rhin"
+  },
+  {
+    "latLng": { "lat": 48.6941, "lng": 6.1841 },
+    "name": "Nancy",
+    "endLatLng": { "lat": 48.6941, "lng": 6.1840 },
+    "endCity": "Meurthe-et-Moselle"
+  },
+  {
+    "latLng": { "lat": 50.6309, "lng": 3.0595 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6308, "lng": 3.0595 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.6040, "lng": 1.4436 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6041, "lng": 1.4434 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 45.7576, "lng": 4.8363 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7576, "lng": 4.8362 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 43.2928, "lng": 5.3683 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2927, "lng": 5.3682 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 48.1168, "lng": -1.6780 },
+    "name": "Rennes",
+    "endLatLng": { "lat": 48.1169, "lng": -1.6779 },
+    "endCity": "Ille-et-Vilaine"
+  },
+  {
+    "latLng": { "lat": 47.2161, "lng": -1.5533 },
+    "name": "Nantes",
+    "endLatLng": { "lat": 47.2161, "lng": -1.5531 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 48.5746, "lng": 7.7528 },
+    "name": "Strasbourg",
+    "endLatLng": { "lat": 48.5746, "lng": 7.7530 },
+    "endCity": "Bas-Rhin"
+  },
+  {
+    "latLng": { "lat": 48.6984, "lng": 6.1844 },
+    "name": "Nancy",
+    "endLatLng": { "lat": 48.6985, "lng": 6.1842 },
+    "endCity": "Meurthe-et-Moselle"
+  },
+  {
+    "latLng": { "lat": 50.6314, "lng": 3.0655 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6314, "lng": 3.0652 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.6055, "lng": 1.4452 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6054, "lng": 1.4450 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 45.7606, "lng": 4.8372 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7607, "lng": 4.8370 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 43.2953, "lng": 5.3704 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2951, "lng": 5.3705 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 49.0571, "lng": 2.3702 },
+    "name": "Paris",
+    "endLatLng": { "lat": 49.0571, "lng": 2.3702 },
+    "endCity": "Val-d'Oise"
+  },
+  {
+    "latLng": { "lat": 48.1166, "lng": -1.6795 },
+    "name": "Rennes",
+    "endLatLng": { "lat": 48.1167, "lng": -1.6795 },
+    "endCity": "Ille-et-Vilaine"
+  },
+  {
+    "latLng": { "lat": 47.2153, "lng": -1.5542 },
+    "name": "Nantes",
+    "endLatLng": { "lat": 47.2153, "lng": -1.5540 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 48.5732, "lng": 7.7502 },
+    "name": "Strasbourg",
+    "endLatLng": { "lat": 48.5732, "lng": 7.7500 },
+    "endCity": "Bas-Rhin"
+  },
+  {
+    "latLng": { "lat": 48.6966, "lng": 6.1857 },
+    "name": "Nancy",
+    "endLatLng": { "lat": 48.6966, "lng": 6.1856 },
+    "endCity": "Meurthe-et-Moselle"
+  },
+  {
+    "latLng": { "lat": 50.6331, "lng": 3.0646 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6330, "lng": 3.0646 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.6052, "lng": 1.4445 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6051, "lng": 1.4443 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 45.7591, "lng": 4.8359 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7592, "lng": 4.8361 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 43.2937, "lng": 5.3692 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2935, "lng": 5.3691 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 49.0555, "lng": 2.3717 },
+    "name": "Paris",
+    "endLatLng": { "lat": 49.0555, "lng": 2.3721 },
+    "endCity": "Val-d'Oise"
   },
   {
     "latLng": { "lat": 48.5115, "lng": 7.5412 },
