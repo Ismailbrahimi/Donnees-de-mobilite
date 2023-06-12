@@ -47,7 +47,7 @@ oopMap.setIcon("../marker.png");
 
 
  coordPairs.forEach(function(pair, index){
-     if(index > 30) return;
+     if(index > 55) return;
      oopMap.setRoutingControl({city: pair.endCity, waypoints: [
         oopMap.L.latLng(pair.latLng.lat, pair.latLng.lng), // Bordeaux
         oopMap.L.latLng(pair.endLatLng.lat, pair.endLatLng.lng), // Rennes 
