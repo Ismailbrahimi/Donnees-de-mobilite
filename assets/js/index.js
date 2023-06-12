@@ -1,6 +1,6 @@
 
 import * as L from "leaflet";
-import {nepaldataa} from "./nepaldata";
+// import {nepaldataa} from "./nepaldata";
 import {pointJSON} from "./point";
 import {polygonJSON} from "./polygon";
 import {lineJSON} from "./line";
