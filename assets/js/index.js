@@ -88,9 +88,9 @@ const Stamen_Watercolor  = oopMap.setTilePlayer("https://stamen-tiles-{s}.a.ssl.
 ===================================================*/
 
 // var linedata = L.geoJSON(lineJSON).addTo(map);
-const linedata = oopMap.setChoroplethMap(lineJSON);
+//const linedata = oopMap.setChoroplethMap(lineJSON);
 // var pointdata = L.geoJSON(pointJSON).addTo(map);
-const pointdata = oopMap.setChoroplethMap(pointJSON);
+/*const pointdata = oopMap.setChoroplethMap(pointJSON);
 
 const polygondata = oopMap.setChoroplethMap(polygonJSON,{
     onEachFeature: function(feature,layer){
@@ -101,7 +101,7 @@ const polygondata = oopMap.setChoroplethMap(polygonJSON,{
         fillOpacity:1,
         color: 'green'
     }
-});
+});*/
 
 const baseLayers = {
     "Satellite":googleSat,
