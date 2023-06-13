@@ -54,6 +54,12 @@ export class PathTracker {
     }
   }
 
+  unhideMarkers() {
+    for (const marker of this.routeMarkers) {
+      this.map.addLayer(marker); // Add the marker back to the map
+    }
+  }
+
   animateMarkerAlongRoute() {
     this.animationStopped = false; // Reset the animationStopped flag
     if (this.routeLines.length > 0 && this.routeMarkers.length > 0) {
@@ -210,8 +216,15 @@ export class PathTracker {
 
       const hideMarkersButton = document.getElementById("hideMarkersButton");
       hideMarkersButton.addEventListener("click", () => {
-        this.hideMarkers();
+        if (hideMarkersButton.textContent === "UnHide buttons") {
+          hideMarkersButton.textContent = "Hide buttons";
+          this.unhideMarkers();
+        } else {
+          hideMarkersButton.textContent = "UnHide buttons";
+          this.hideMarkers();
+        }
       });
+
     })
     .addTo(this.map);
   }

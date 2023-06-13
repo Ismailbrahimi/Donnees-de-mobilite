@@ -689,5 +689,533 @@
     "name": "Pessac",
     "endLatLng": { "lat": 44.8040, "lng": -0.6327 },
     "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Cergy",
+    "endLatLng": { "lat": 49.0333, "lng": 2.0667 },
+    "endCity": "Val-d'Oise"
+  },
+  {
+    "latLng": { "lat": 44.8378, "lng": -0.5792 },
+    "name": "Pessac",
+    "endLatLng": { "lat": 44.8040, "lng": -0.6327 },
+    "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 43.6045, "lng": 1.4440 },
+    "name": "Toulouse",
+    "endLatLng": { "lat": 43.6045, "lng": 1.4440 },
+    "endCity": "Haute-Garonne"
+  },
+  {
+    "latLng": { "lat": 48.1173, "lng": -1.6778 },
+    "name": "Rennes",
+    "endLatLng": { "lat": 48.1173, "lng": -1.6778 },
+    "endCity": "Ille-et-Vilaine"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Nantes",
+    "endLatLng": { "lat": 47.2184, "lng": -1.5536 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 48.3904, "lng": -4.4861 },
+    "name": "Brest",
+    "endLatLng": { "lat": 48.3904, "lng": -4.4861 },
+    "endCity": "Finistère"
+  },
+  {
+    "latLng": { "lat": 48.5734, "lng": 7.7521 },
+    "name": "Strasbourg",
+    "endLatLng": { "lat": 48.5734, "lng": 7.7521 },
+    "endCity": "Bas-Rhin"
+  },
+  {
+    "latLng": { "lat": 47.3220, "lng": 5.0415 },
+    "name": "Dijon",
+    "endLatLng": { "lat": 47.3220, "lng": 5.0415 },
+    "endCity": "Côte-d'Or"
+  },
+  {
+    "latLng": { "lat": 50.6293, "lng": 3.0573 },
+    "name": "Lille",
+    "endLatLng": { "lat": 50.6293, "lng": 3.0573 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.7102, "lng": 7.2620 },
+    "name": "Nice",
+    "endLatLng": { "lat": 43.7102, "lng": 7.2620 },
+    "endCity": "Alpes-Maritimes"
+  },
+  {
+    "latLng": { "lat": 45.7670, "lng": 4.8334 },
+    "name": "Lyon",
+    "endLatLng": { "lat": 45.7670, "lng": 4.8334 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 43.2965, "lng": 5.3698 },
+    "name": "Marseille",
+    "endLatLng": { "lat": 43.2965, "lng": 5.3698 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Paris",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Île-de-France"
+  },
+  {
+    "latLng": { "lat": 43.1242, "lng": 5.9280 },
+    "name": "Toulon",
+    "endLatLng": { "lat": 43.1242, "lng": 5.9280 },
+    "endCity": "Var"
+  },
+  {
+    "latLng": { "lat": 47.9030, "lng": 1.9093 },
+    "name": "Orléans",
+    "endLatLng": { "lat": 47.9030, "lng": 1.9093 },
+    "endCity": "Loiret"
+  },
+  {
+    "latLng": { "lat": 46.6031, "lng": 1.8883 },
+    "name": "Limoges",
+    "endLatLng": { "lat": 46.6031, "lng": 1.8883 },
+    "endCity": "Haute-Vienne"
+  },
+  {
+    "latLng": { "lat": 48.3904, "lng": -4.4861 },
+    "name": "Quimper",
+    "endLatLng": { "lat": 48.3904, "lng": -4.4861 },
+    "endCity": "Finistère"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Versailles",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Yvelines"
+  },
+  {
+    "latLng": { "lat": 47.3941, "lng": 0.6848 },
+    "name": "Tours",
+    "endLatLng": { "lat": 47.3941, "lng": 0.6848 },
+    "endCity": "Indre-et-Loire"
+  },
+  {
+    "latLng": { "lat": 48.6921, "lng": 6.1844 },
+    "name": "Nancy",
+    "endLatLng": { "lat": 48.6921, "lng": 6.1844 },
+    "endCity": "Meurthe-et-Moselle"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Saint-Nazaire",
+    "endLatLng": { "lat": 47.2184, "lng": -1.5536 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 44.8378, "lng": -0.5792 },
+    "name": "Bordeaux",
+    "endLatLng": { "lat": 44.8378, "lng": -0.5792 },
+    "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 45.7517, "lng": 4.8415 },
+    "name": "Saint-Étienne",
+    "endLatLng": { "lat": 45.7517, "lng": 4.8415 },
+    "endCity": "Loire"
+  },
+  {
+    "latLng": { "lat": 50.6293, "lng": 3.0573 },
+    "name": "Roubaix",
+    "endLatLng": { "lat": 50.6293, "lng": 3.0573 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 47.3220, "lng": 5.0415 },
+    "name": "Besançon",
+    "endLatLng": { "lat": 47.3220, "lng": 5.0415 },
+    "endCity": "Doubs"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Fontainebleau",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Seine-et-Marne"
+  },
+  {
+    "latLng": { "lat": 43.7102, "lng": 7.2620 },
+    "name": "Cannes",
+    "endLatLng": { "lat": 43.7102, "lng": 7.2620 },
+    "endCity": "Alpes-Maritimes"
+  },
+  {
+    "latLng": { "lat": 44.8378, "lng": -0.5792 },
+    "name": "Arcachon",
+    "endLatLng": { "lat": 44.8378, "lng": -0.5792 },
+    "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 43.6045, "lng": 1.4440 },
+    "name": "Montauban",
+    "endLatLng": { "lat": 43.6045, "lng": 1.4440 },
+    "endCity": "Tarn-et-Garonne"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Meaux",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Seine-et-Marne"
+  },
+  {
+    "latLng": { "lat": 50.6293, "lng": 3.0573 },
+    "name": "Tourcoing",
+    "endLatLng": { "lat": 50.6293, "lng": 3.0573 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 43.1242, "lng": 5.9280 },
+    "name": "La Seyne-sur-Mer",
+    "endLatLng": { "lat": 43.1242, "lng": 5.9280 },
+    "endCity": "Var"
+  },
+  {
+    "latLng": { "lat": 47.9030, "lng": 1.9093 },
+    "name": "Bourges",
+    "endLatLng": { "lat": 47.9030, "lng": 1.9093 },
+    "endCity": "Cher"
+  },
+  {
+    "latLng": { "lat": 46.6031, "lng": 1.8883 },
+    "name": "Brive-la-Gaillarde",
+    "endLatLng": { "lat": 46.6031, "lng": 1.8883 },
+    "endCity": "Corrèze"
+  },
+  {
+    "latLng": { "lat": 48.3904, "lng": -4.4861 },
+    "name": "Lorient",
+    "endLatLng": { "lat": 48.3904, "lng": -4.4861 },
+    "endCity": "Morbihan"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Neuilly-sur-Seine",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Hauts-de-Seine"
+  },
+  {
+    "latLng": { "lat": 47.3941, "lng": 0.6848 },
+    "name": "Blois",
+    "endLatLng": { "lat": 47.3941, "lng": 0.6848 },
+    "endCity": "Loir-et-Cher"
+  },
+  {
+    "latLng": { "lat": 48.6921, "lng": 6.1844 },
+    "name": "Metz",
+    "endLatLng": { "lat": 48.6921, "lng": 6.1844 },
+    "endCity": "Moselle"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Saint-Herblain",
+    "endLatLng": { "lat": 47.2184, "lng": -1.5536 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 44.8378, "lng": -0.5792 },
+    "name": "Merignac",
+    "endLatLng": { "lat": 44.8378, "lng": -0.5792 },
+    "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 43.7102, "lng": 7.2620 },
+    "name": "Antibes",
+    "endLatLng": { "lat": 43.7102, "lng": 7.2620 },
+    "endCity": "Alpes-Maritimes"
+  },
+  {
+    "latLng": { "lat": 45.7670, "lng": 4.8334 },
+    "name": "Villeurbanne",
+    "endLatLng": { "lat": 45.7670, "lng": 4.8334 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 50.6293, "lng": 3.0573 },
+    "name": "Dunkirk",
+    "endLatLng": { "lat": 50.6293, "lng": 3.0573 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 47.3220, "lng": 5.0415 },
+    "name": "Mâcon",
+    "endLatLng": { "lat": 47.3220, "lng": 5.0415 },
+    "endCity": "Saône-et-Loire"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Sartrouville",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Yvelines"
+  },
+  {
+    "latLng": { "lat": 43.1242, "lng": 5.9280 },
+    "name": "Fréjus",
+    "endLatLng": { "lat": 43.1242, "lng": 5.9280 },
+    "endCity": "Var"
+  },
+  {
+    "latLng": { "lat": 47.9030, "lng": 1.9093 },
+    "name": "Chartres",
+    "endLatLng": { "lat": 47.9030, "lng": 1.9093 },
+    "endCity": "Eure-et-Loir"
+  },
+  {
+    "latLng": { "lat": 46.6031, "lng": 1.8883 },
+    "name": "Guéret",
+    "endLatLng": { "lat": 46.6031, "lng": 1.8883 },
+    "endCity": "Creuse"
+  },
+  {
+    "latLng": { "lat": 48.3904, "lng": -4.4861 },
+    "name": "Quimperlé",
+    "endLatLng": { "lat": 48.3904, "lng": -4.4861 },
+    "endCity": "Finistère"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Clichy",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Hauts-de-Seine"
+  },
+  {
+    "latLng": { "lat": 47.3941, "lng": 0.6848 },
+    "name": "Châteauroux",
+    "endLatLng": { "lat": 47.3941, "lng": 0.6848 },
+    "endCity": "Indre"
+  },
+  {
+    "latLng": { "lat": 48.6921, "lng": 6.1844 },
+    "name": "Thionville",
+    "endLatLng": { "lat": 48.6921, "lng": 6.1844 },
+    "endCity": "Moselle"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Rezé",
+    "endLatLng": { "lat": 47.2184, "lng": -1.5536 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 44.8378, "lng": -0.5792 },
+    "name": "Bègles",
+    "endLatLng": { "lat": 44.8378, "lng": -0.5792 },
+    "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 43.7102, "lng": 7.2620 },
+    "name": "Grasse",
+    "endLatLng": { "lat": 43.7102, "lng": 7.2620 },
+    "endCity": "Alpes-Maritimes"
+  },
+  {
+    "latLng": { "lat": 45.7670, "lng": 4.8334 },
+    "name": "Vénissieux",
+    "endLatLng": { "lat": 45.7670, "lng": 4.8334 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 50.6293, "lng": 3.0573 },
+    "name": "Villeneuve-d'Ascq",
+    "endLatLng": { "lat": 50.6293, "lng": 3.0573 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 47.3220, "lng": 5.0415 },
+    "name": "Dole",
+    "endLatLng": { "lat": 47.3220, "lng": 5.0415 },
+    "endCity": "Jura"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Colombes",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Hauts-de-Seine"
+  },
+  {
+    "latLng": { "lat": 43.1242, "lng": 5.9280 },
+    "name": "Draguignan",
+    "endLatLng": { "lat": 43.1242, "lng": 5.9280 },
+    "endCity": "Var"
+  },
+  {
+    "latLng": { "lat": 47.9030, "lng": 1.9093 },
+    "name": "Dreux",
+    "endLatLng": { "lat": 47.9030, "lng": 1.9093 },
+    "endCity": "Eure-et-Loir"
+  },
+  {
+    "latLng": { "lat": 46.6031, "lng": 1.8883 },
+    "name": "Tulle",
+    "endLatLng": { "lat": 46.6031, "lng": 1.8883 },
+    "endCity": "Corrèze"
+  },
+  {
+    "latLng": { "lat": 48.3904, "lng": -4.4861 },
+    "name": "Morlaix",
+    "endLatLng": { "lat": 48.3904, "lng": -4.4861 },
+    "endCity": "Finistère"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Aubervilliers",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Seine-Saint-Denis"
+  },
+  {
+    "latLng": { "lat": 47.3941, "lng": 0.6848 },
+    "name": "Vendôme",
+    "endLatLng": { "lat": 47.3941, "lng": 0.6848 },
+    "endCity": "Loir-et-Cher"
+  },
+  {
+    "latLng": { "lat": 48.6921, "lng": 6.1844 },
+    "name": "Montigny-lès-Metz",
+    "endLatLng": { "lat": 48.6921, "lng": 6.1844 },
+    "endCity": "Moselle"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Orvault",
+    "endLatLng": { "lat": 47.2184, "lng": -1.5536 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 44.8378, "lng": -0.5792 },
+    "name": "Talence",
+    "endLatLng": { "lat": 44.8378, "lng": -0.5792 },
+    "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 43.7102, "lng": 7.2620 },
+    "name": "Cagnes-sur-Mer",
+    "endLatLng": { "lat": 43.7102, "lng": 7.2620 },
+    "endCity": "Alpes-Maritimes"
+  },
+  {
+    "latLng": { "lat": 45.7670, "lng": 4.8334 },
+    "name": "Caluire-et-Cuire",
+    "endLatLng": { "lat": 45.7670, "lng": 4.8334 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 50.6293, "lng": 3.0573 },
+    "name": "Marcq-en-Barœul",
+    "endLatLng": { "lat": 50.6293, "lng": 3.0573 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 47.3220, "lng": 5.0415 },
+    "name": "Lons-le-Saunier",
+    "endLatLng": { "lat": 47.3220, "lng": 5.0415 },
+    "endCity": "Jura"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Asnières-sur-Seine",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Hauts-de-Seine"
+  },
+  {
+    "latLng": { "lat": 43.1242, "lng": 5.9280 },
+    "name": "La Ciotat",
+    "endLatLng": { "lat": 43.1242, "lng": 5.9280 },
+    "endCity": "Bouches-du-Rhône"
+  },
+  {
+    "latLng": { "lat": 47.9030, "lng": 1.9093 },
+    "name": "Châteaudun",
+    "endLatLng": { "lat": 47.9030, "lng": 1.9093 },
+    "endCity": "Eure-et-Loir"
+  },
+  {
+    "latLng": { "lat": 46.6031, "lng": 1.8883 },
+    "name": "Brive-la-Gaillarde",
+    "endLatLng": { "lat": 46.6031, "lng": 1.8883 },
+    "endCity": "Corrèze"
+  },
+  {
+    "latLng": { "lat": 48.3904, "lng": -4.4861 },
+    "name": "Concarneau",
+    "endLatLng": { "lat": 48.3904, "lng": -4.4861 },
+    "endCity": "Finistère"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Levallois-Perret",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Hauts-de-Seine"
+  },
+  {
+    "latLng": { "lat": 47.3941, "lng": 0.6848 },
+    "name": "Romorantin-Lanthenay",
+    "endLatLng": { "lat": 47.3941, "lng": 0.6848 },
+    "endCity": "Loir-et-Cher"
+  },
+  {
+    "latLng": { "lat": 48.6921, "lng": 6.1844 },
+    "name": "Forbach",
+    "endLatLng": { "lat": 48.6921, "lng": 6.1844 },
+    "endCity": "Moselle"
+  },
+  {
+    "latLng": { "lat": 47.2184, "lng": -1.5536 },
+    "name": "Saint-Sébastien-sur-Loire",
+    "endLatLng": { "lat": 47.2184, "lng": -1.5536 },
+    "endCity": "Loire-Atlantique"
+  },
+  {
+    "latLng": { "lat": 44.8378, "lng": -0.5792 },
+    "name": "Le Bouscat",
+    "endLatLng": { "lat": 44.8378, "lng": -0.5792 },
+    "endCity": "Gironde"
+  },
+  {
+    "latLng": { "lat": 43.7102, "lng": 7.2620 },
+    "name": "Vallauris",
+    "endLatLng": { "lat": 43.7102, "lng": 7.2620 },
+    "endCity": "Alpes-Maritimes"
+  },
+  {
+    "latLng": { "lat": 45.7670, "lng": 4.8334 },
+    "name": "Bron",
+    "endLatLng": { "lat": 45.7670, "lng": 4.8334 },
+    "endCity": "Rhône"
+  },
+  {
+    "latLng": { "lat": 50.6293, "lng": 3.0573 },
+    "name": "Wattrelos",
+    "endLatLng": { "lat": 50.6293, "lng": 3.0573 },
+    "endCity": "Nord"
+  },
+  {
+    "latLng": { "lat": 47.3220, "lng": 5.0415 },
+    "name": "Saint-Claude",
+    "endLatLng": { "lat": 47.3220, "lng": 5.0415 },
+    "endCity": "Jura"
+  },
+  {
+    "latLng": { "lat": 48.8566, "lng": 2.3522 },
+    "name": "Gennevilliers",
+    "endLatLng": { "lat": 48.8566, "lng": 2.3522 },
+    "endCity": "Hauts-de-Seine"
+  },
+  {
+    "latLng": { "lat": 43.1242, "lng": 5.9280 },
+    "name": "Martigues",
+    "endLatLng": { "lat": 43.1242, "lng": 5.9280 },
+    "endCity": "Bouches-du-Rhône"
   }
 ]
