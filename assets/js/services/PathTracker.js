@@ -104,7 +104,7 @@ export class PathTracker {
 
                 this.regions.features.forEach(feature => {
                   if (feature.properties.nom === destinations[j]) {
-                    feature.properties.density += 100; // Update the density value to your desired value
+                    feature.properties.density += 1; // Update the density value to your desired value
                     this.geoJSON.setStyle(this.style);
 
                   }
@@ -115,7 +115,7 @@ export class PathTracker {
           }
 
           if (i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-            setTimeout(moveMarker, 10); // Adjust the delay to control animation speed
+            setTimeout(moveMarker, 1); // Adjust the delay to control animation speed
             i++;
           }
 
@@ -130,7 +130,7 @@ export class PathTracker {
         moveMarker();
 
         if (!this.animationStopped && i < Math.max(...coordinateCounts) - 1 && markersReachedDestination < markerCount) {
-          setTimeout(animateMarker, 100); // Adjust the delay to control animation speed
+          setTimeout(animateMarker, 1); // Adjust the delay to control animation speed
         }
       };
 
@@ -247,7 +247,7 @@ export class PathTracker {
     } else {
       return this.L.geoJSON(data).addTo(this.map);
     }
-  }
+  } 
 
   getColor(d) {
     return d > 1000 ? '#800026' :
